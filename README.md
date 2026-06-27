@@ -2,159 +2,163 @@
 
 ## Problem Summary
 
-The objective of this project was to clean and validate a retail order dataset containing various data quality issues. The raw data included missing values, inconsistent text formatting, duplicate order IDs, date inconsistencies, and invalid records that could affect business reporting. The goal was to create a clean, analysis-ready dataset and generate summary reports to support business decision-making.
+Retail businesses rely on accurate and consistent data to make informed decisions. However, the raw dataset provided for this assignment contained several data quality issues, including inconsistent text formatting, missing values, duplicate order IDs, date inconsistencies, and records that did not satisfy the given business rules. These issues could lead to incorrect reporting and unreliable business insights.
+
+The objective of this project was to clean and validate the dataset, apply the required business rules, create an analysis-ready version of the data, and generate summary reports that accurately represent the business performance.
 
 ---
 
-## Dataset Description
+# Dataset Description
 
-The dataset contains order-level information for a retail business, including customer details, product categories, sales, profit, shipping information, discounts, payment status, and order status.
+The dataset contains retail order information at the order level. It includes customer details, product categories, sales and profit values, discounts, shipping information, payment status, and order status.
 
 Two versions of the dataset are included in this repository:
 
-* **raw_orders.xlsx** – Original dataset provided for the assignment (unchanged).
-* **cleaned_orders.xlsx** – Cleaned dataset containing standardized values, calculated fields, and data quality flags.
+* **raw_orders.xlsx** – The original dataset provided for the assignment. This file has been kept unchanged.
+* **cleaned_orders.xlsx** – The cleaned version of the dataset after applying all required data cleaning, validation, and calculated fields.
+
+Additional files included in this repository are:
+
+* **data_quality_report.xlsx**
+* **pivot_summary.xlsx**
+* **cleaning_log.md**
 
 ---
 
-## Tools Used
+# Tools Used
 
-* Google Sheets / Microsoft Excel
-* Excel formulas (TRIM, PROPER, IF, IFERROR, COUNTIF, YEAR, MONTH, TEXT, etc.)
-* Pivot Tables
+The project was completed using the following tools and spreadsheet features:
+
+* Excel
+* Spreadsheet formulas such as TRIM, PROPER, IF, IFERROR, COUNTIF, YEAR, MONTH, TEXT, and other logical functions
 * Conditional Formatting
-* Find & Replace
+* Find and Replace
+* Pivot Tables
+* Sorting and Filtering
 
 ---
 
-## Cleaning Steps Performed
+# Cleaning Steps Performed
 
-The following steps were carried out to prepare the dataset for analysis:
+The dataset was cleaned in a structured manner to ensure that the original data remained unchanged while producing a reliable version for analysis.
 
-* Preserved the original dataset without making any modifications.
-* Removed unnecessary leading and trailing spaces from text fields.
-* Standardized capitalization and corrected inconsistent text entries.
-* Cleaned and standardized customer names, regions, states, cities, categories, sub-categories, ship modes, payment statuses, and order statuses.
-* Converted date fields into a consistent format.
-* Calculated shipping delay for each order.
-* Filled missing Region and Ship Mode values with **"Unknown"**.
-* Replaced missing Discount values with **0** where applicable according to the business rules.
-* Identified duplicate Order IDs and flagged records containing conflicting information.
-* Added calculated columns including:
+The following steps were performed:
 
-  * Cleaned Discount
-  * Calculated Sales
-  * Calculated Profit
-  * Profit Margin
-  * Shipping Delay Days
-  * Order Month
-  * Order Year
-  * Data Quality Flag
-* Generated a data quality report and pivot summary report.
+1. Preserved the original dataset as **raw_orders.xlsx**.
+2. Created a separate working file named **cleaned_orders.xlsx**.
+3. Removed leading, trailing, and extra spaces from text fields.
+4. Standardized capitalization and corrected inconsistent text values across customer names, regions, states, cities, categories, sub-categories, ship modes, payment status, and order status.
+5. Standardized the order and ship date columns into a consistent date format.
+6. Identified missing values throughout the dataset.
+7. Replaced missing Region values with **"Unknown"**.
+8. Replaced missing Ship Mode values with **"Unknown"**.
+9. Replaced missing Discount values with **0** where allowed by the business rules.
+10. Identified duplicate Order IDs and flagged conflicting records instead of deleting them.
+11. Flagged records where the ship date occurred before the order date.
+12. Created additional calculated columns:
+
+* Cleaned Discount
+* Calculated Sales
+* Calculated Profit
+* Profit Margin
+* Shipping Delay Days
+* Order Month
+* Order Year
+* Data Quality Flag
+
+13. Generated a Data Quality Report summarizing all identified issues.
+14. Created Pivot Tables to summarize and analyse the cleaned data.
 
 ---
 
-## Business Rules Applied
+# Business Rules Applied
 
-The following business rules were followed during the cleaning process:
+The following business rules were applied while cleaning the dataset:
 
-* Missing Region values were replaced with **Unknown**.
+* Missing Region values were replaced with **Unknown** and recorded in the data quality report.
 * Missing Ship Mode values were replaced with **Unknown**.
-* Missing Discount values were treated as **0** only when other sales-related fields were valid.
-* Negative or unusually high discount values were flagged as invalid.
-* Records where the ship date occurred before the order date were flagged.
-* Cancelled, refunded, and failed payment records were excluded from completed sales summaries.
-* Duplicate Order IDs containing different information were retained and flagged for manual review instead of being removed.
+* Missing Discount values were treated as **0** only when the remaining sales-related information was valid.
+* Negative discount values and discounts above the accepted range were flagged as invalid.
+* Orders where the Ship Date occurred before the Order Date were marked as invalid shipping records.
+* Cancelled orders, failed payments, and refunded transactions were excluded from completed sales summaries.
+* Exact duplicate rows were removed only if every value matched.
+* Duplicate Order IDs containing conflicting information were retained and flagged for manual review instead of being deleted.
 
 ---
 
-## Summary of Data Quality Issues Found
+# Summary of Data Quality Issues Found
 
-The following issues were identified during data validation:
+Several data quality issues were identified during the cleaning process, including:
 
-* Missing values in Region, Ship Mode, Discount, Order Date, and Ship Date.
-* Inconsistent text formatting across several columns.
-* Duplicate Order IDs with conflicting information.
-* Invalid shipping dates.
-* Invalid or missing discount values.
-* Records with cancelled, refunded, or failed payment statuses.
-* Data requiring manual review before final business reporting.
+* Missing Region values
+* Missing Ship Mode values
+* Missing Discount values
+* Missing Order Dates
+* Missing Ship Dates
+* Duplicate Order IDs with conflicting information
+* Invalid shipping dates
+* Invalid discount values
+* Cancelled orders
+* Failed payment records
+* Refunded transactions
+* Records requiring manual review
 
----
-
-## Summary of Pivot Reports
-
-The following pivot reports were created:
-
-1. Sales and Profit by Region
-2. Sales and Profit by Category and Sub-category
-3. Order Count by Ship Mode
-4. Average Profit Margin by Customer Segment
-5. Refunded, Cancelled, and Failed Orders by Region
-6. Monthly Sales Trend
-
-Sorting and filtering were applied to selected pivot tables to improve readability and analysis.
+All identified issues have been documented in **data_quality_report.xlsx**.
 
 ---
 
-## Key Business Insights
+# Summary of Final Pivot Reports
 
-The cleaned dataset made it easier to identify business trends and data quality issues. Some key observations include:
+After cleaning the dataset, the following Pivot Tables were created to summarize business performance:
 
-* Sales performance varied across different regions.
-* Certain product categories generated higher profits than others.
-* Standard shipping was the most frequently used shipping method.
-* A small number of records required manual review due to conflicting Order IDs.
-* Cancelled, refunded, and failed transactions represented non-completed business and were excluded from completed sales analysis.
-* Data cleaning significantly improved the consistency and reliability of the dataset for reporting.
+1. **Sales and Profit by Region** – compares business performance across different regions.
+2. **Sales and Profit by Category and Sub-category** – identifies product categories contributing the highest sales and profit.
+3. **Order Count by Ship Mode** – shows the number of orders handled by each shipping method.
+4. **Average Profit Margin by Customer Segment** – compares profitability across customer segments.
+5. **Refunded, Cancelled, and Failed Orders by Region** – highlights non-completed transactions across different regions.
+6. **Monthly Sales Trend** – displays sales performance over time.
 
----
-
-## Assumptions and Limitations
-
-### Assumptions
-
-* Blank discount values were treated as **0** when other sales information was available.
-* Quantity and Unit Price values were assumed to be accurate.
-* Duplicate Order IDs containing different information were assumed to require manual verification.
-* Profit Margin was calculated as **Profit ÷ Sales**.
-
-### Limitations
-
-* Some business rules required reasonable assumptions because detailed business documentation was not provided.
-* Records with conflicting duplicate information cannot be resolved automatically.
-* The accuracy of calculated fields depends on the correctness of the original dataset.
+Sorting and filtering were applied to selected Pivot Tables to improve readability and analysis.
 
 ---
 
-## Repository Structure
+# Key Business Insights
 
-```text
-part1_data_cleaning/
-├── data/
-│   ├── raw_orders.xlsx
-│   └── cleaned_orders.xlsx
-├── outputs/
-│   ├── data_quality_report.xlsx
-│   ├── pivot_summary.xlsx
-│   └── cleaning_log.md
-├── screenshots/
-│   ├── raw_data_preview.png
-│   ├── cleaned_data_preview.png
-│   ├── pivot_summary_1.png
-│   └── pivot_summary_2.png
-└── README.md
-```
+The cleaned dataset provided a clearer view of overall business performance. Some important observations include:
+
+* Sales and profit are not evenly distributed across all regions, indicating regional differences in business performance.
+* Certain product categories contribute significantly more revenue and profit than others.
+* Standard shipping is the most frequently used shipping method.
+* A small number of records require manual review because of conflicting duplicate Order IDs.
+* Excluding cancelled, refunded, and failed transactions provides a more accurate representation of completed sales.
+* Cleaning and validating the data improves the reliability of business reports and future analysis.
 
 ---
 
-## Screenshots Included
+# Assumptions and Limitations
 
-The repository contains the following screenshots as evidence of the completed work:
+## Assumptions
 
-* **raw_data_preview.png** – Original dataset before cleaning.
-* **cleaned_data_preview.png** – Cleaned dataset with calculated columns.
-* **pivot_summary_1.png** – Sales and Profit by Region pivot table.
-* **pivot_summary_2.png** – Monthly Sales Trend (or another pivot summary).
+* Missing Discount values were treated as **0** only when the remaining sales information was valid.
+* Quantity and Unit Price values were assumed to be correct for calculation purposes.
+* Duplicate Order IDs containing conflicting information were considered business exceptions and therefore retained for manual review.
+* Calculated fields were created using the information available in the provided dataset.
 
-These screenshots demonstrate the cleaning process and the final analysis outputs.
+## Limitations
+
+* Some records still require manual verification because conflicting duplicate Order IDs cannot be resolved automatically.
+* The analysis depends entirely on the accuracy of the original source data.
+* Some business decisions were based on the assignment instructions because additional business documentation was not provided.
+
+---
+
+# Screenshots Included
+
+The repository includes screenshots that demonstrate the work completed during the assignment:
+
+* **raw_data_preview.png** – Original dataset before any cleaning was performed.
+* **cleaned_data_preview.png** – Cleaned dataset showing standardized fields and calculated columns.
+* **pivot_summary_1.png** – Sales and Profit by Region Pivot Table.
+* **pivot_summary_2.png** – Monthly Sales Trend Pivot Table.
+
+These screenshots provide evidence of the data cleaning process and the final analytical outputs generated from the cleaned dataset.
