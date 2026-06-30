@@ -156,9 +156,9 @@ The cleaned dataset provided a clearer view of overall business performance. Som
 
 The repository includes screenshots that demonstrate the work completed during the assignment:
 
-* **raw_data_preview.png** – Original dataset before any cleaning was performed.
-* **cleaned_data_preview.png** – Cleaned dataset showing standardized fields and calculated columns.
-* **pivot_summary_1.png** – Sales and Profit by Region Pivot Table.
-* **pivot_summary_2.png** – Monthly Sales Trend Pivot Table.
+* **raw_data_preview.png** – Original dataset before any cleaning was performed.(https://github.com/manyarana/manyarana_2511046_part1_data_cleaning/blob/main/screenshots/raw_data_preview.png)
+* **cleaned_data_preview.png** – Cleaned dataset showing standardized fields and calculated columns.(https://github.com/manyarana/manyarana_2511046_part1_data_cleaning/blob/main/screenshots/cleaned_data_preview.png)
+* **pivot_summary_1.png** – Sales and Profit by Region Pivot Table.(https://github.com/manyarana/manyarana_2511046_part1_data_cleaning/blob/main/screenshots/pivot_summary_1.png)
+* **pivot_summary_2.png** – Monthly Sales Trend Pivot Table.(https://github.com/manyarana/manyarana_2511046_part1_data_cleaning/blob/main/screenshots/pivot_summary_2.png)
 
 These screenshots provide evidence of the data cleaning process and the final analytical outputs generated from the cleaned dataset.
